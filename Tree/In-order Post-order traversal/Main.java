@@ -1,13 +1,61 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+public class Main {
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+  
+    static class Node {
+        int Data;
+        Node Lchild;
+        Node Rchild;
+
+        Node(int val) {
+            Data = val;
+            Lchild = null;
+            Rchild = null;
+        }
+    }
+
+    // Inorder Traversal 
+    static void Inorder(Node root) {
+        if (root != null) {
+            Inorder(root.Lchild);
+            System.out.print(root.Data + " ");
+            Inorder(root.Rchild);
+        }
+    }
+
+    // Preorder Traversal 
+    static void Preorder(Node root) {
+        if (root != null) {
+            System.out.print(root.Data + " ");
+            Preorder(root.Lchild);
+            Preorder(root.Rchild);
+        }
+    }
+
+    // Postorder Traversal 
+    static void Postorder(Node root) {
+        if (root != null) {
+            Postorder(root.Lchild);
+            Postorder(root.Rchild);
+            System.out.print(root.Data + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+
+       
+        Node root = new Node(10);
+        root.Lchild = new Node(20);
+        root.Rchild = new Node(30);
+        root.Lchild.Lchild = new Node(40);
+        root.Lchild.Rchild = new Node(50);
+
+        System.out.println("Inorder Traversal:");
+        Inorder(root);
+
+        System.out.println("\nPreorder Traversal:");
+        Preorder(root);
+
+        System.out.println("\nPostorder Traversal:");
+        Postorder(root);
     }
 }
