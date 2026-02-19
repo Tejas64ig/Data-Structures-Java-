@@ -1,6 +1,4 @@
 public class Main {
-
-  
     static class Node {
         int Data;
         Node Lchild;
